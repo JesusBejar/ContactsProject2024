@@ -1,6 +1,7 @@
 // below is lean code for a server
 const express = require('express');
 const app = express();
+const mongodb = require('./routes/data/database');
 
 app.get('/', (req, res) =>(
     res.send('Hola Mundo!')
