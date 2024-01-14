@@ -8,8 +8,10 @@ app.get('/', (req, res) => (
 ));
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
+
 const port = 3000;
-mongodb.initDb((err)=> {
+
+mongodb.initDb((err) => {
     if(err){
         console.log(err);
     }else {
