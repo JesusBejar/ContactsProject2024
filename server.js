@@ -1,9 +1,9 @@
 // below is lean code for a server
 const express = require('express');
 const app = express();
-const mongodb = require('./routes/data/database');
+const mongodb = require('./data/database');
 
-app.get('/', (req, res) =>(
+app.get('/', (req, res) => (
     res.send('Hola Mundo!')
 ));
 // checks for traffic in routes/index.js
