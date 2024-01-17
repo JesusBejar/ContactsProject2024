@@ -1,6 +1,7 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
+// these match with endpoints in ./routes/contacts.js
 const getAll = async (req, res) => {
     const result = await mongodb.getDatabase().db().collection('contacts').find();
     result.toArray().then((contacts) => {
@@ -18,7 +19,11 @@ const getSingle = async (req, res) => {
     }).catch();
 };
 
+// don't forget to export
 module.exports = {
     getAll, 
-    getSingle
+    getSingle, 
+    createUser, 
+    updateUser, 
+    deleteUser
 };
