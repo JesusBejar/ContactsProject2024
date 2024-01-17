@@ -1,3 +1,5 @@
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -18,7 +20,63 @@ const getSingle = async (req, res) => {
         res.status(200).json(contacts[0]);
     }).catch();
 };
-
+// add userId objects to update and delete functions!!!
+// const userId = new ObjectId(req.params.id);
+// arrow = anonymous
+const createUser = async () => {
+    // execution
+    const user = {
+    firstName : req.body.firstName,
+    lastName : req.body.lastName,
+    email : req.body.email,
+    favColor : req.body.favColor,
+    bday : req.body.bday
+    };
+    const response = await mongodb.getDatabase().db().collection('contacts').insertOne({_id: userId}, user);
+    // execution check
+    if(response.modifiedCount > 0){
+        res.status(204).send();
+    }
+    else{
+        res.status(500).json(response.error || "You done messed up AAron!");
+    }
+};
+const updateUser = async () => {
+    // execution
+    const user = {
+    firstName : req.body.firstName,
+    lastName : req.body.lastName,
+    email : req.body.email,
+    favColor : req.body.favColor,
+    bday : req.body.bday
+    };
+    const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({_id: userId}, user);
+    // execution check
+    if(response.acknowledged > 0){
+        res.status(204).send();
+    }
+    else{
+        res.status(500).json(response.error || "You done messed up AAron!");
+    }
+};
+const deleteUser = async () => {
+        // execution
+        const user = {
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        email : req.body.email,
+        favColor : req.body.favColor,
+        bday : req.body.bday
+        };
+        const response = await mongodb.getDatabase().db().collection('contacts').remove({_id: userId}, true);
+        // execution check
+        if(response.deletedCount > 0){
+            res.status(204).send();
+        }
+        else{
+            res.status(500).json(response.error || "You done messed up AAron!");
+        }
+    };
 // don't forget to export
 module.exports = {
     getAll, 
