@@ -8,6 +8,7 @@ app.get('/', (req, res) => (
 ));
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
+app.use(bodyParser.json());
 
 const port = 3000;
 
