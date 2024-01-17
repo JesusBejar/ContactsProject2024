@@ -8,6 +8,7 @@ app.get('/', (req, res) => (
 ));
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
+// body parser "allows us to read the body author request object"
 app.use(bodyParser.json());
 
 const port = 3000;

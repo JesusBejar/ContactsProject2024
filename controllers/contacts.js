@@ -43,6 +43,7 @@ const createUser = async () => {
 };
 const updateUser = async () => {
     // execution
+    const userId = new ObjectId(req.params.id);
     const user = {
     firstName : req.body.firstName,
     lastName : req.body.lastName,
@@ -61,6 +62,7 @@ const updateUser = async () => {
 };
 const deleteUser = async () => {
         // execution
+        const userId = new ObjectId(req.params.id);
         const user = {
         firstName : req.body.firstName,
         lastName : req.body.lastName,
