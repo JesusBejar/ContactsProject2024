@@ -1,0 +1,32 @@
+# get all users in collection
+GET http://localhost:3000/contacts
+
+# get contact by id as shown in collection
+# be sure to include specific id num
+GET http://localhost:3000/contacts/65a2d03ef6a4391f67caedc7
+
+# Create contact POST
+POST http://localhost:3000/contacts HTTP/1.1
+content-type: application/json
+{
+    "firstName": "Maximus",
+    "lastName": "Decimus",
+    "email":"maximusdecimus@romegmail.com",
+    "favColor": "wheat",
+    "bday": "125AD"
+}
+
+# Update contact PUT
+# be sure to include specific id num
+PUT http://localhost:3000/contacts/65a2d03ef6a4391f67caedc7 HTTP/1.1
+content-type: application/json
+{
+    "firstName": "Marcus",
+    "lastName": "Aurelius",
+    "email":"marcusaurelius@romegmail.com",
+    "favColor": "brain gray",
+    "bday": "100AD"
+}
+
+# Delete contact DELETE
+DELETE http://localhost:3000/contacts/65a2d03ef6a4391f67caedc7 HTTP/1.1
