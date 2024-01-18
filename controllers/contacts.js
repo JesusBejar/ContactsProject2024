@@ -70,7 +70,7 @@ const deleteUser = async () => {
         favColor : req.body.favColor,
         bday : req.body.bday
         };
-        const response = await mongodb.getDatabase().db().collection('contacts').remove({_id: userId}, true);
+        const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({_id: userId});
         // execution check
         if(response.deletedCount > 0){
             res.status(204).send();

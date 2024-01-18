@@ -2,16 +2,17 @@
 const express = require('express');
 const app = express();
 const mongodb = require('./data/database');
+const bodyParser = require('body-parser');
 
 app.get('/', (req, res) => (
     res.send('Hola Mundo!')
 ));
+// port
+const port = 3000;
+app.use(bodyParser.json());
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
 // body parser "allows us to read the body author request object"
-app.use(bodyParser.json());
-
-const port = 3000;
 
 mongodb.initDb((err) => {
     if(err){
