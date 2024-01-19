@@ -10,6 +10,19 @@ app.get('/', (req, res) => (
 // port
 const port = 3000;
 app.use(bodyParser.json());
+
+// this is for testing
+// allows cross origin
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-type, Accept, Z-key'
+    );
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();
+});
+
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
 // body parser "allows us to read the body author request object"
