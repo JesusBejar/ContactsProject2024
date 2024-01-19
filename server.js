@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 app.get('/', (req, res) => (
     res.send('Hola Mundo!')
 ));
-// port
-const port = 3000;
+// 1st port (the 2nd is in swagger.js)
+const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // this is for testing
@@ -32,7 +32,8 @@ mongodb.initDb((err) => {
         console.log(err);
     }else {
         // listens for traffic on port 3000
-        app.listen(process.env.port || port);
-        console.log('Db is listening & server is listening at port ' + (process.env.port || port));
+        app.listen(port, () => {console.log('Db is listening and running on port ${port}')});
+        // app.listen(process.env.port || port);
+        // console.log('Db is listening & server is listening at port ' + (process.env.port || port));
     }
 });
