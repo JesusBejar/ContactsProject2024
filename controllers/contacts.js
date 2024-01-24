@@ -17,6 +17,10 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
+    // validation code below
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Contact id is invalid, please us a valid contact id');
+    }
     // #swagger.tags=['Contacts']
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('Contacts').find({ _id: userId }).toArray((err, result) =>{
@@ -51,6 +55,10 @@ const createUser = async () => {
     }
 };
 const updateUser = async () => {
+    // validation code below
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Contact id is invalid, please us a valid contact id');
+    }
     // #swagger.tags=['Contacts']
     // execution
     const userId = new ObjectId(req.params.id);
@@ -72,6 +80,10 @@ const updateUser = async () => {
     }
 };
 const deleteUser = async () => {
+    // validation code below
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Contact id is invalid, please us a valid contact id');
+    }
     // #swagger.tags=['Contacts']
     // execution
     const userId = new ObjectId(req.params.id);
