@@ -42,7 +42,8 @@ const createUser = async () => {
         res.status(204).send();
     }
     else{
-        res.status(500).json(response.error || "You done messed up AAron!");
+        // 401 = unauthorized
+        res.status(401).json(response.error || "You done messed up AAron!");
     }
 };
 const updateUser = async () => {
@@ -62,7 +63,8 @@ const updateUser = async () => {
         res.status(204).send();
     }
     else{
-        res.status(500).json(response.error || "You done messed up AAron!");
+        // 403 = Forbidden
+        res.status(403).json(response.error || "You done messed up AAron!");
     }
 };
 const deleteUser = async () => {
@@ -82,7 +84,8 @@ const deleteUser = async () => {
         res.status(204).send();
     }
     else{
-        res.status(500).json(response.error || "You done messed up AAron!");
+        // 400 = bad request
+        res.status(400).json(response.error || "You done messed up AAron!");
     }
 };
 // don't forget to export

@@ -25,8 +25,12 @@ app.use((req, res, next) => {
 
 // checks for traffic in routes/index.js
 app.use('/', require('./routes'));
-// body parser "allows us to read the body author request object"
 
+// catch all error handler (not specific)
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `HA GOTTEM (caught exceptions): ${err}\n` + `Exception origin ${origin}`)
+})
+// body parser "allows us to read the body author request object"
 mongodb.initDb((err) => {
     if(err){
         console.log(err);
