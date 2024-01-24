@@ -1,5 +1,5 @@
-const validator = require('../helpers?/validate');
-
+const validator = require('../helpers/validate');
+// below is a middleware function
 const saveContact = async (req, res, next) => {
     const validationRule = {
         "firstName": "required|string|",
@@ -18,6 +18,8 @@ const saveContact = async (req, res, next) => {
                     data: err
                 });
         } else {
+            // next moves on from this function to createUser or updateUser
+            // found in contacts.js lines 10 & 12
             next();
         }
     })
