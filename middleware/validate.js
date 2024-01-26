@@ -1,6 +1,7 @@
 const validator = require('../helpers/validate');
 // below is a middleware function
 const saveContact = (req, res, next) => {
+    // validation rules
     const validationRule = {
         "firstName": "required|string",
         "lastName": "required|string",
@@ -11,7 +12,8 @@ const saveContact = (req, res, next) => {
 
     validator(req.body, validationRule, {}, (err, status) => {
         if (!status) {
-            res.status(412).send({
+            // 412 also works
+            res.status(500).send({
                 success: false,
                 message: 'Validation unsucessful good sir',
                 data: err
